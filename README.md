@@ -60,7 +60,19 @@ make run
 ## 🗂️ Project structure
 
 ```text
-Still to be decided
+AllocatorLaboratory/
+├── journal/                  # Technical journal
+│   ├── en/                   # English entries
+│   │   └── entries/
+│   │   └── journal_index.md
+│   └── es/                   # Spanish entries
+│       └── entries/
+│       └── journal_index.es.md
+├── src/                      # Project source code
+│   └── main.c
+├── .gitignore
+├── README.md                 # English version
+└── README.es.md              # Spanish version
 ```
 
 ## 🎢 Allocator roadmap
