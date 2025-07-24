@@ -4,8 +4,10 @@
 int bitmap[BITMAP_SIZE] = {0};
 
 void print_bitmap_comparison(int old_bitmap[]){ 
-    printf("Old Bitmap\t\tNew Bitmap\n");
+    // headers 
     printf("\n         Before         \t\t          After\n");
+
+    // content 
     for(int i = 0;  i < BITMAP_SIZE/8; i++){ 
         // the old bitmap
         for(int j = 0; j < 8; j++){

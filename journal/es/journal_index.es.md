@@ -14,6 +14,7 @@ Aquí registro mis ideas, decisiones de diseño, dificultades, aprendizajes y mo
 |-------------|----------------------------------|----------------------------------|
 | 2025-07-00  | 🌱 El Origen                     | [2025-07-00_allolab.es.md](./entries/2025-07-00_allolab.es.md) |
 | 2025-07-21  | 🧱 Planeando el primer nivel      | [2025-07-21_allolab.es.md](./entries/2025-07-21_allolab.es.md) |
+| 2025-07-23  | 🧠 Mientras programo: imprimiendo el bitmap | [2025-07-23_allolab.es.md](./entries/2025-07-23_allolab.es.md) |
 
 ---
 

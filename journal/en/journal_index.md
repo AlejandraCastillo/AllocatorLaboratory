@@ -4,16 +4,17 @@ This journal documents the personal and technical process behind **Allocator Lab
 
 Here I record my ideas, design decisions, challenges, lessons learned, and meaningful moments throughout the development of the project.
 
-[Consultaersión en español](../es/journal_index.es.md)
+[Consulta versión en español](../es/journal_index.es.md)
 
 ---
 
 ## 📅 Entry Index
 
 | Date        | Title                             | File                             |
-|-------------|------------------------------------|----------------------------------|
-| 2025-07-00  | 🌱 The Origin                      | [2025-07-00_allolab.md](./entries/2025-07-00_allolab.md) |
-| 2025-07-21  | 🧱 Planning the First Level         | [2025-07-21_allolab.md](./entries/2025-07-21_allolab.md) |
+|-------------|-----------------------------------|----------------------------------|
+| 2025-07-00  | 🌱 The Origin                     | [2025-07-00_allolab.md](./entries/2025-07-00_allolab.md) |
+| 2025-07-21  | 🧱 Planning the First Level       | [2025-07-21_allolab.md](./entries/2025-07-21_allolab.md) |
+| 2025-07-23  | 🧠 Mientras programo: imprimiendo el bitmap | [2025-07-23_allolab.md](./entries/2025-07-23_allolab.md) |
 
 ---
 
