@@ -1,0 +1,15 @@
+# VSCode
+.vscode/
+
+# Obsidian
+.obsidian/
+
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+
+# Compilados
+*.out
+*.o
+*.exe
