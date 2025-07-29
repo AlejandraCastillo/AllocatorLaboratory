@@ -9,14 +9,15 @@ int bitmap[BITMAP_SIZE] = {
     1,1,1,0,0,0,0,0, //5
     1,0,0,0,0,0,0,1, //6
     1,1,1,1,1,0,0,0,
-    0,0,1,1,1,1,1,0, //5, 
-    0,0,0,0,0,0,0,1, //8
     1,1,0,0,0,1,1,1, //3
     0,1,1,0,0,0,1,1, //3 
     1,1,1,0,0,0,0,0, //5
     1,0,0,0,0,0,0,1, //6
     1,1,1,1,1,0,0,0,
     0,0,1,1,1,1,1,0, //5, 1
+    1,1,0,0,0,1,1,1, //3
+    0,0,1,1,1,1,1,0, //5, 
+    0,0,0,0,0,0,0,1, //8
 };
 
 void print_bitmap_comparison(int old_bitmap[]){ 
@@ -75,22 +76,58 @@ int allocate_block(int block_size){
     return -1; //no hay espacio disponible 
 }
 
+int free_block(int block_dir, int block_size){
+    if(block_dir+block_size-1 > BITMAP_SIZE){
+        return -1; //goes out of bounds of the bitmap
+    }
+
+    if(bitmap[block_dir] == 0){
+            return 1; //at least the start of the block is already free
+    }
+
+    for (int i = 0; i < block_size; i++){
+        bitmap[block_dir + i] = 0;  
+    }
+
+    return 0; //all good
+}
+
 
 int main(int argc, char const *argv[])
 {
-    int old_bitmap[BITMAP_SIZE]; 
-    save_bitmap_state(old_bitmap);  
+    /* First Test of allocate_block() */
 
-    // prepare bitmap for testing
+    int old_bitmap[BITMAP_SIZE]; 
+    save_bitmap_state(old_bitmap);
+
     int block_size = 7;
     int dir = allocate_block(block_size);
     
+    
     if(dir != -1){
+        printf("\n\nAllocate memory");
         printf("\n\nblockSize = %d \ndir = %d\n\n", block_size, dir);
         print_bitmap_comparison(old_bitmap);    
     }
     else {
-        printf("Lo siento, no hay espacio en memoria");
+        printf("\nError: Not enough space in memory.\n");
+    }
+    
+    /* First Test of free_block() */
+
+    save_bitmap_state(old_bitmap);  
+    
+    int free_result = free_block(dir, block_size); 
+    
+    if(free_result == 0){
+        printf("\n\nDesallocate memory");
+        print_bitmap_comparison(old_bitmap);
+    }
+    else {
+        if (free_result == -1)
+            printf("Error: Attempted to free outside of memory bounds.\n");
+        else if (free_result == 1)
+            printf("Error: Block is already free.\n");
     }
 
     return 0;
