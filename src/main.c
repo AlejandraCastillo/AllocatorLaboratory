@@ -57,24 +57,28 @@ void save_bitmap_state(int copy_dest[]){
 }
 
 int allocate_block(int block_size){
-    for(int i = 0; i < BITMAP_SIZE; i++){ //recorremos el bitmap
-        if(bitmap[i] == 0){ //hasta encontrar un 0
-            for(int j = 0; j < block_size; j++){ //entonces contamos ceros hasta que...
-                if(bitmap[i+j] != 0){ //encontremos una celda ocupada
-                    i += j; //entonces actualizamos i
-                    j = block_size; //y salimos de este for 
+    // Traverse bitmap looking for free spaces
+    for(int i = 0; i < BITMAP_SIZE; i++){ 
+        if(bitmap[i] == 0){ 
+            // Check if the free block has the right size
+            for(int j = 0; j < block_size; j++){ 
+                if(bitmap[i+j] != 0){ 
+                    i += j; 
+                    j = block_size; 
                 }
-                else if (j == block_size-1){ // o hasta que tengamos un bloque del tamaño correcto
-                    for(int k = 0; k < block_size; k++){ //entoences nos regresamos al incio del bloque
-                        bitmap[i+k] =1; //y lo ocupamos con 1s
+                else if (j == block_size-1){
+                    // Mark the block as occupied
+                    for(int k = 0; k < block_size; k++){ 
+                        bitmap[i+k] = 1; 
                     }
-                    return i; //y devolvemos la direccion del bloque 
+                    return i; // Return the starting address
                 }
             } 
         }
     }
-    return -1; //no hay espacio disponible 
+    return -1; // No space available
 }
+
 
 int free_block(int block_dir, int block_size){
     if(block_dir+block_size-1 > BITMAP_SIZE){
