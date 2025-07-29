@@ -16,6 +16,7 @@ Here I record my ideas, design decisions, challenges, lessons learned, and meani
 | 2025-07-21  | 🧱 Planning the First Level       | [2025-07-21_allolab.md](./entries/2025-07-21_allolab.md) |
 | 2025-07-23  | 🧠 Mientras programo: imprimiendo el bitmap | [2025-07-23_allolab.md](./entries/2025-07-23_allolab.md) |
 | 2025-07-24  | 🤐 Mutism Day | [2025-07-24_allolab.md](./entries/2025-07-24_allolab.md) |
+| 2025-07-28  | Name | [2025-07-28_allolab.md](./entries/2025-07-28_allolab.md) |
 
 ---
 
