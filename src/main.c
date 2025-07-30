@@ -20,6 +20,14 @@ int bitmap[BITMAP_SIZE] = {
     0,0,0,0,0,0,0,1, //8
 };
 
+typedef struct metadata {
+    int address; 
+    int size; 
+    int in_use;  
+} metadata;
+
+metadata allocation_table[BITMAP_SIZE]; 
+
 void print_bitmap_comparison(int old_bitmap[]){ 
     // headers 
     printf("\n         Before         \t\t          After\n");
@@ -56,7 +64,44 @@ void save_bitmap_state(int copy_dest[]){
     }
 }
 
+int save_address(int address, int size){
+    for(int i = 0; i < BITMAP_SIZE; i++){
+        if(allocation_table[i].in_use == 0){
+            allocation_table[i].address = address; 
+            allocation_table[i].size = size; 
+            allocation_table[i].in_use = 1; 
+        }
+        return 1; // Successful operation
+    }
+    return -1; // No space available
+}
+
+int free_address(int address){
+    for(int i = 0; i < BITMAP_SIZE; i++){
+        if(allocation_table[i].address == address){
+            allocation_table[i].in_use = 0; 
+        }
+        return 1; // Successful operation
+    }
+    return -1; // No address found 
+}
+
+int get_data_size(int address){
+    for(int i = 0; i < BITMAP_SIZE; i++){
+        if(allocation_table[i].address == address && allocation_table[i].in_use == 1){
+            return allocation_table[i].size; 
+        }
+    }
+    return -1; // No address found 
+}
+
 int allocate_block(int block_size){
+
+    //verify that the size is valid
+    if(block_size > BITMAP_SIZE || block_size < 1){
+        return -2; //invalid size
+    }
+
     // Traverse bitmap looking for free spaces
     for(int i = 0; i < BITMAP_SIZE; i++){ 
         if(bitmap[i] == 0){ 
@@ -71,6 +116,9 @@ int allocate_block(int block_size){
                     for(int k = 0; k < block_size; k++){ 
                         bitmap[i+k] = 1; 
                     }
+                    if(save_address(i, block_size)==-1){
+                        return -1; // No space available
+                    } 
                     return i; // Return the starting address
                 }
             } 
@@ -80,20 +128,27 @@ int allocate_block(int block_size){
 }
 
 
-int free_block(int block_dir, int block_size){
-    if(block_dir+block_size-1 > BITMAP_SIZE){
+int free_block(int block_address){
+
+    int block_size = get_data_size(block_address); 
+
+    if (block_size < 1 || block_size > BITMAP_SIZE){
+        return 0; // invalid address
+    }
+
+    if(block_address < 0 || block_address+block_size-1 > BITMAP_SIZE){
         return -1; //goes out of bounds of the bitmap
     }
 
-    if(bitmap[block_dir] == 0){
-            return 1; //at least the start of the block is already free
+    if(free_address(block_address)==-1){
+        return -1; // No address found 
+    } else {
+        for (int i = 0; i < block_size; i++){
+            bitmap[block_address + i] = 0;  
+        }
     }
 
-    for (int i = 0; i < block_size; i++){
-        bitmap[block_dir + i] = 0;  
-    }
-
-    return 0; //all good
+    return 1; //all good
 }
 
 
@@ -105,12 +160,12 @@ int main(int argc, char const *argv[])
     save_bitmap_state(old_bitmap);
 
     int block_size = 7;
-    int dir = allocate_block(block_size);
+    int address = allocate_block(block_size);
     
     
-    if(dir != -1){
+    if(address != -1){
         printf("\n\nAllocate memory");
-        printf("\n\nblockSize = %d \ndir = %d\n\n", block_size, dir);
+        printf("\n\nblockSize = %d \naddress = %d\n\n", block_size, address);
         print_bitmap_comparison(old_bitmap);    
     }
     else {
@@ -121,17 +176,17 @@ int main(int argc, char const *argv[])
 
     save_bitmap_state(old_bitmap);  
     
-    int free_result = free_block(dir, block_size); 
+    int free_result = free_block(address); 
     
-    if(free_result == 0){
+    if(free_result == 1){
         printf("\n\nDesallocate memory");
         print_bitmap_comparison(old_bitmap);
     }
     else {
         if (free_result == -1)
             printf("Error: Attempted to free outside of memory bounds.\n");
-        else if (free_result == 1)
-            printf("Error: Block is already free.\n");
+        else if (free_result == 0)
+            printf("Error: invalid address.\n");
     }
 
     return 0;
