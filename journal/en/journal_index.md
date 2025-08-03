@@ -18,6 +18,7 @@ Here I record my ideas, design decisions, challenges, lessons learned, and meani
 | 2025-07-24  | 🤐 Mutism day | [2025-07-24_allolab.md](./entries/2025-07-24_allolab.md) |
 | 2025-07-28  | 🧠 While coding: freeing memory | [2025-07-28_allolab.md](./entries/2025-07-28_allolab.md) |
 | 2025-07-29  | 🧠 While coding: allocation table | [2025-07-29_allolab.md](./entries/2025-07-29_allolab.md) |
+| 2025-08-02  | ♾️ Burnout | [2025-08-02_allolab.md](./entries/2025-08-02_allolab.md) |
 
 ---
 

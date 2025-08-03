@@ -18,6 +18,7 @@ Aquí registro mis ideas, decisiones de diseño, dificultades, aprendizajes y mo
 | 2025-07-24  | 🤐 Día de mutismo  | [2025-07-24_allolab.es.md](./entries/2025-07-24_allolab.es.md) |
 | 2025-07-28  | 🧠 Mientras programo: liberando memoria | [2025-07-28_allolab.es.md](./entries/2025-07-28_allolab.es.md) |
 | 2025-07-29  | 🧠 Mientras programo: tabla de asignaciones  | [2025-07-29_allolab.es.md](./entries/2025-07-29_allolab.es.md) |
+| 2025-08-02  | ♾️ Burnout  | [2025-08-02_allolab.es.md](./entries/2025-08-02_allolab.es.md) |
 
 ---
 
