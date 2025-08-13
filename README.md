@@ -61,18 +61,21 @@ make run
 
 ```text
 AllocatorLaboratory/
-├── journal/                  # Technical journal
-│   ├── en/                   # English entries
+├── journal/                       # Technical journal
+│   ├── en/                        # English entries
 │   │   └── entries/
 │   │   └── journal_index.md
-│   └── es/                   # Spanish entries
+│   └── es/                        # Spanish entries
 │       └── entries/
 │       └── journal_index.es.md
-├── src/                      # Project source code
-│   └── main.c
+├── src/                           # Project source code
+│   ├── core/                      # Core infrastructure
+│   ├── allocators/                # Allocator strategies
+│   │   └── allocator.h            # Common allocator interface
+│   └── main.c                     # Entry point
 ├── .gitignore
-├── README.md                 # English version
-└── README.es.md              # Spanish version
+├── README.md                      # English version
+└── README.es.md                   # Spanish version
 ```
 
 ## 🎢 Allocator roadmap

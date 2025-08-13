@@ -70,18 +70,22 @@ make run
 
 ```text
 AllocatorLaboratory/
-├── journal/                  # Diario técnico
-│   ├── en/                   # Entradas en inglés
+├── journal/                       # Diario técnico
+│   ├── en/                        # Entradas en inglés
 │   │   └── entries/
 │   │   └── journal_index.md
-│   └── es/                   # Entradas en español
+│   └── es/                        # Entradas en español
 │       └── entries/
 │       └── journal_index.es.md
-├── src/                      # Código fuente del proyecto
-│   └── main.c
+├── src/                           # Código fuente del proyecto
+│   ├── core/                      # Infraestructura central
+│   ├── allocators/                # Estrategias de asignadores de memoria
+│   │   └── allocator.h            # Interfaz común para allocators
+│   └── main.c                     # Punto de entrada
 ├── .gitignore
-├── README.md                 # Versión en inglés
-└── README.es.md              # Versión en español
+├── README.md                      # Versión en inglés
+└── README.es.md                   # Versión en español
+
 ```
 
 ## 🎢 Ruta de alocadores
