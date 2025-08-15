@@ -4,6 +4,9 @@
 # Obsidian
 .obsidian/
 
+journal/today.md
+journal/templates.md
+
 # Archivos temporales
 *.log
 *.tmp
